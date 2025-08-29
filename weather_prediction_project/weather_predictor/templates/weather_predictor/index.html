@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Weather Prediction System</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">🌤️ Weather Prediction System</h1>
+                <p class="subtitle">LSTM-based Machine Learning Weather Forecasting</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="card">
+                    <h2>🏙️ City Weather Prediction</h2>
+                    <form id="predictionForm" class="prediction-form">
+                        <div class="form-group">
+                            <label for="cityInput">Enter City Name:</label>
+                            <input type="text" id="cityInput" name="city" placeholder="e.g., New York, London, Tokyo" required>
+                        </div>
+                        <button type="submit" id="predictBtn" class="predict-btn">
+                            <span id="btnText">🔮 Predict Weather</span>
+                            <div id="loader" class="loader hidden"></div>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <div class="card">
+                    <h2>📊 Prediction Results</h2>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <h3>🌡️ Predicted Temperature</h3>
+                            <div id="predictedTemp" class="temperature-display">--°C</div>
+                            <div id="cityName" class="city-name">--</div>
+                        </div>
+                        <div class="result-item">
+                            <h3>📈 Model Performance</h3>
+                            <div class="metrics-grid">
+                                <div class="metric">
+                                    <span class="metric-label">MSE:</span>
+                                    <span id="mseValue" class="metric-value">--</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">MAE:</span>
+                                    <span id="maeValue" class="metric-value">--</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">R² Score:</span>
+                                    <span id="r2Value" class="metric-value">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart Section -->
+                <div class="card">
+                    <h2>📉 Historical Weather Data & Prediction</h2>
+                    <div id="weatherChart" class="chart-container"></div>
+                </div>
+
+                <!-- Model Info Section -->
+                <div class="card">
+                    <h2>🤖 Model Information</h2>
+                    <div id="modelInfo" class="model-info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Architecture:</span>
+                            <span class="info-value">LSTM Neural Network</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Framework:</span>
+                            <span class="info-value">TensorFlow/Keras</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Features:</span>
+                            <span class="info-value">Temperature, Humidity, Pressure, Wind Speed</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Training Samples:</span>
+                            <span id="trainingSamples" class="info-value">--</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section id="errorSection" class="error-section hidden">
+                <div class="card error-card">
+                    <h2>❌ Error</h2>
+                    <p id="errorMessage"></p>
+                    <button onclick="hideError()" class="retry-btn">Try Again</button>
+                </div>
+            </section>
+
+            <!-- Disclaimer -->
+            <section class="disclaimer">
+                <div class="card disclaimer-card">
+                    <p><strong>⚠️ Disclaimer:</strong> This weather prediction is generated by a machine learning model for educational and demonstration purposes only. The predictions are not guaranteed to be accurate and should not be used for critical decision-making. Always consult official weather services for reliable weather information.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Weather Prediction System | Built with Django & LSTM</p>
+        </footer>
+    </div>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
