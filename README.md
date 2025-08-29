@@ -28,7 +28,7 @@ Weather-Prediction-WebApp/
 # 🛠️ Installation & Setup
 
 # 1️⃣ Clone the repository
-git clone https://github.com/your-username/weather-prediction-webapp.git
+git clone https://github.com/codexrups10/weather-predictor-using-ai.git
 cd weather-prediction-webapp
 
 # 2️⃣ Create a virtual environment
